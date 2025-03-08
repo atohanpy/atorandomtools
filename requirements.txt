@@ -1,0 +1,14 @@
+subprocess
+random
+dns.resolver
+requests
+colorama
+rich.console
+rich.panel
+rich.table
+rich.text
+string
+re
+os
+base64
+socket
