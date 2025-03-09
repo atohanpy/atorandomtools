@@ -1,14 +1,4 @@
-subprocess
-random
-dns.resolver
+dnspython
 requests
 colorama
-rich.console
-rich.panel
-rich.table
-rich.text
-string
-re
-os
-base64
-socket
+rich
