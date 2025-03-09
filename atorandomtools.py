@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 from colorama import Fore
 import requests
 import socket
@@ -7,8 +8,15 @@ import re
 import subprocess
 import dns.resolver
 import string
+import random
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
 
-print(Fore.RED + """
+console = Console()
+
+art = """
             \       /
               .---.
          '-.  |   |  .-'
@@ -22,24 +30,33 @@ print(Fore.RED + """
        .-"`   `"`'`   `"-.
      .'                   '.
 --------------------------------
-""")
+"""
 
-print("ig: ato.asd            discord: lailaheillalah")
+console.print(Panel.fit(art, border_style="red"))
+
+print(" ")
+print("ig: ato.asd       ||       discord: lailaheillalah")
 print("[I] Welcome to random tools!")
 print("[I] İf you get (None) requests api is broken contact me on social or u entered invalid.")
 print("[I] Only for educational purposes..")
-print(" ")
-print("- [0] Exit")
-print("- [1]  IP Address Lookup      ||    [11] Website Validator              ||    [21] Base32 Encode         ||    [31] Base82 Decode       ||    [41] BIN Checker")
-print("- [2]  URL Shortener          ||    [12] Ping                           ||    [22] Base32 Decode         ||    [32] Base52 Encode       ||    [42] Proxy Checker")
-print("- [3]  Base64 Encode          ||    [13] WHOIS Lookup                   ||    [23] Tilki.Dev AI          ||    [33] Base52 Decode       ||    [43] IPv6 Lookup")
-print("- [4]  Base64 Decode          ||    [14] HTTP Header Checker            ||    [24] Gemini AI             ||    [34] MAC Adress Lookup   ||    [44] URL Shortener 2")
-print("- [5]  Find File              ||    [15] SSL Certificate Checker        ||    [25] Password Generator    ||    [35] Morse Code Decode")
-print("- [6]  Find Path              ||    [16] Network Scanner (Ping Sweep)   ||    [26] Discord ID Checker    ||    [36] Morse Code Encode")
-print("- [7]  Port Checker           ||    [17] Hash Generator                 ||    [27] NPM İnformation       ||    [37] ChatGPT 4")
-print("- [8]  Malware Scanner        ||    [18] Password Strength Checker      ||    [28] Roblox User Checker   ||    [38] Link Bypass")
-print("- [9]  Subdomain Finder       ||    [19] Github User Checker            ||    [29] İmage Generator AI    ||    [39] Pastebin Creator")
-print("- [10] DNS Lookup             ||    [20] Random User Generator          ||    [30] Base82 Encode         ||    [40] İndex Stealer")
+print("[I] https://github.com/atohanpy")
+print("[I] [0] Exit\n")
+
+text = """
+- [1]  IP Address Lookup      ||    [11] Website Validator              ||    [21] Base32 Encode         ||    [31] Base82 Decode       ||    [41] BIN Checker
+- [2]  URL Shortener          ||    [12] Ping                           ||    [22] Base32 Decode         ||    [32] Base52 Encode       ||    [42] Proxy Checker
+- [3]  Base64 Encode          ||    [13] WHOIS Lookup                   ||    [23] Tilki.Dev AI          ||    [33] Base52 Decode       ||    [43] IPv6 Lookup
+- [4]  Base64 Decode          ||    [14] HTTP Header Checker            ||    [24] Gemini AI             ||    [34] MAC Adress Lookup   ||    [44] URL Shortener 2
+- [5]  Find File              ||    [15] SSL Certificate Checker        ||    [25] Password Generator    ||    [35] Morse Code Decode   ||    [45] Proxy List (HTTPS)
+- [6]  Find Path              ||    [16] Network Scanner (Ping Sweep)   ||    [26] Discord ID Checker    ||    [36] Morse Code Encode   ||    [46] Proxy List (SOCKS5)
+- [7]  Port Checker           ||    [17] Hash Generator                 ||    [27] NPM İnformation       ||    [37] ChatGPT 4           ||    [47] Random Nitro Code Generator
+- [8]  Malware Scanner        ||    [18] Password Strength Checker      ||    [28] Roblox User Checker   ||    [38] Link Bypass         ||    [48] Lorem İpsum
+- [9]  Subdomain Finder       ||    [19] Github User Checker            ||    [29] İmage Generator AI    ||    [39] Pastebin Creator    ||    [49] RAW Paste Creator 
+- [10] DNS Lookup             ||    [20] Random User Generator          ||    [30] Base82 Encode         ||    [40] İndex Stealer       ||    [50] Clear
+"""
+
+console.print(Panel(text, border_style="bold red"))
+
 print(" ")
 
 def port_scanner(host, port):
@@ -761,7 +778,79 @@ while True:
     	 print("----------------------------")
     	 print("- The Shorten URL we got: ", response.text)
     	 print("----------------------------")
-    	  	
+    	 
+    elif choice == "45":
+        count = int(input("- How much proxy do u want? (SOCKS5): "))
+
+        if count > 0:
+            url = "https://www.socks-proxy.net/"
+            headers = {"User-Agent": "Mozilla/5.0"}
+
+            response = requests.get(url, headers=headers)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            proxy_list = []
+            for row in soup.select("table tbody tr")[:count]:
+                ip = row.select_one("td").text
+                port = row.select_one("td:nth-of-type(2)").text
+                proxy_type = row.select_one("td:nth-of-type(7)").text  
+                if proxy_type == "SOCKS5":  
+                    proxy_list.append(f"{ip}:{port}")
+
+            # Proxyleri dosyaya kaydet
+            with open("proxylist.txt", "w") as file:
+                for proxy in proxy_list:
+                    file.write(proxy + "\n")
+
+            print("----------------------------")
+            print(f"- {count} SOCKS5 proxy saved to 'proxylist.txt'")
+            print("----------------------------")
+        else:
+            print("- Invalid proxy count, try again!")
+            
+    elif choice == "47":
+      def generate_random_code(length=16):
+         characters = string.ascii_letters + string.digits
+         return ''.join(random.choices(characters, k=length))
+
+      def generate_multiple_codes(n, length=16):
+         codes = [generate_random_code(length) for _ in range(n)]
+         return codes
+
+      num_codes = int(input("- How much discord nitro code u want to generate?: "))
+
+      if num_codes > 0:
+         codes = generate_multiple_codes(num_codes)
+
+         with open("nitro_codes.txt", "w") as file:
+              for code in codes:
+                 file.write(f"https://discord.com/gift/{code}\n")
+         
+         print("----------------------------")
+         print(f"{num_codes} nitro code saved to 'nitro_codes.txt'.")
+         print("----------------------------")
+         
+    elif choice == "48":
+         num = input("- Enter number: ")
+         
+         response = requests.get(f"https://tilki.dev/api/lorem-ipsum?sayi={num}").json()
+         
+         print("----------------------------")
+         print(response.get("text"))
+         print("----------------------------")
+         
+    elif choice == "49":
+         paste = input("- Enter text of paste:")
+         
+         r = requests.get(f"https://tilki.dev/api/paste?mesaj={paste}").json()
+         
+         print("----------------------------")
+         print("- RAW Link:", r.get("web"))
+         print("----------------------------")
+         
+    elif choice == "50":
+        os.system('clear' if os.name != 'nt' else 'cls')
+        
     elif choice == "0":
          print("----------------------------")
          print("Exiting the program...")
