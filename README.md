@@ -4,7 +4,10 @@
 
 ## **Termux Tutorial**
 ```
-- git clone https://github.com/atohanpy/atorandomtools
+— git clone https://github.com/atohanpy/atorandomtools
 — cd atorandomtools
 — pip install -r requirements.txt
 — python atorandomtools.py
+
+```
+a
