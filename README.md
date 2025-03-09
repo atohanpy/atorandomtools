@@ -12,4 +12,4 @@
 — python atorandomtools.py
 ```
 
-![Preview](https://i.hizliresim.com/by6j34a.jpg)
+![Preview](preview.jpg)
