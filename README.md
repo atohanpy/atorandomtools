@@ -11,3 +11,5 @@
 — pip install -r requirements.txt
 — python atorandomtools.py
 ```
+
+![Preview](https://i.hizliresim.com/by6j34a.jpg)
