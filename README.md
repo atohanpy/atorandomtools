@@ -4,10 +4,11 @@
 
 ## **Termux Tutorial**
 ```
+— pkg update && pkg upgrade -y
+— pkg install python git -y
 — git clone https://github.com/atohanpy/atorandomtools
 — cd atorandomtools
 — pip install -r requirements.txt
 — python atorandomtools.py
-
 ```
-a
+
