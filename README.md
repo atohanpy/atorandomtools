@@ -2,7 +2,7 @@
 - Thats useful multiple tool for easy jobs, made with <3 by wazely
 - 50x random tools powered by APIs
 
-## **Termux Tutorial**
+## **Linux Tutorial**
 ```
 — pkg update && pkg upgrade -y
 — pkg install python git -y
@@ -11,4 +11,3 @@
 — pip install -r requirements.txt
 — python atorandomtools.py
 ```
-
