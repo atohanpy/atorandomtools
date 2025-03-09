@@ -3,7 +3,7 @@
 - 50x random tools powered by APIs
 
 ## **Termux Tutorial**
-```python
+```
 - git clone https://github.com/atohanpy/atorandomtools
 — cd atorandomtools
 — pip install -r requirements.txt
